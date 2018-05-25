@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/audio/mocking/</loc>
+    <lastmod>2018-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/about/</loc>
     <lastmod>2018-05-22T21:48:51-07:00</lastmod>
   </url>
@@ -86,7 +91,7 @@
   
   <url>
     <loc>/audio/</loc>
-    <lastmod>2017-11-01T16:12:47+01:00</lastmod>
+    <lastmod>2018-05-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -149,6 +154,12 @@
   </url>
   
   <url>
+    <loc>/tags/fxxkingmyself/</loc>
+    <lastmod>2018-05-25T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/gallery/</loc>
     <lastmod>2017-11-01T18:01:26+01:00</lastmod>
     <priority>0</priority>
@@ -186,13 +197,19 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-05-22T21:48:51-07:00</lastmod>
+    <lastmod>2018-05-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/author/kesa/</loc>
     <lastmod>2018-05-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/author/kesas-superego/</loc>
+    <lastmod>2018-05-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -234,7 +251,7 @@
   
   <url>
     <loc>/categories/plain-text/</loc>
-    <lastmod>2018-05-22T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
