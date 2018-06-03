@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/dotween/</loc>
+    <lastmod>2018-06-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/%E6%88%91%E7%9C%9F%E6%98%AF%E5%AF%B9%E8%87%AA%E5%B7%B1%E5%BE%88%E6%9C%89%E8%87%AA%E4%BF%A1%E5%93%88/</loc>
     <lastmod>2018-05-30T00:00:00+00:00</lastmod>
   </url>
@@ -135,6 +140,12 @@
   </url>
   
   <url>
+    <loc>/tags/dotween/</loc>
+    <lastmod>2018-06-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/author/edward-snowden/</loc>
     <lastmod>2017-11-01T13:01:14+01:00</lastmod>
     <priority>0</priority>
@@ -202,7 +213,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-05-30T00:00:00+00:00</lastmod>
+    <lastmod>2018-06-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -220,7 +231,7 @@
   
   <url>
     <loc>/author/kesas-superego/</loc>
-    <lastmod>2018-05-25T00:00:00+00:00</lastmod>
+    <lastmod>2018-06-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -286,7 +297,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-05-30T00:00:00+00:00</lastmod>
+    <lastmod>2018-06-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

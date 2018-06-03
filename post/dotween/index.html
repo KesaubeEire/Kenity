@@ -25,7 +25,7 @@
         
         <title>
             
-                Kenity | R Markdown
+                Kenity | DoTween的使用方法(转载)
             
         </title>
     </head>
@@ -86,11 +86,10 @@
 
         <div class="main container">
             
-    
-    
-        <div class="article-wrapper u-cf">
-            
-                <a class="bubble" href="/post/2015-07-23-r-rmarkdown/">
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="/post/dotween/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -98,31 +97,181 @@
     
 
     <div class="content">
-    <h3><a href="/post/2015-07-23-r-rmarkdown/">Hello R Markdown</a></h3>
+    <h3><a href="/post/dotween/">DoTween的使用方法(转载)</a></h3>
     <div class="meta">
-        <span class="date moment">2015-07-23</span>
+        <span class="date moment">2018-06-03</span>
 
-        
-            <span class="categories">
-                
-                    <a href="/categories/r">R</a>
-                
-            </span>
         
 
         
-            <span class="author"><a href="/author/frida-gomam">Frida Gomam</a></span>
+            <span class="author"><a href="/author/kesas-superego">Kesa’s superego</a></span>
         
     </div>
 
     
-        R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.
+        <p><img src="//upload-images.jianshu.io/upload_images/1214868-2cf7a81e8d3d0507.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/665" alt="" /></p>
 
-        
-            <a href="/post/2015-07-23-r-rmarkdown/" class="more">Continue reading</a>
-        
+<p>转自<a href="https://www.jianshu.com/p/0cbc9518d182">Unity-Dotween</a>
+</p>
+
+<p><strong>补间动画</strong>：又叫做中间帧动画，渐变动画，只要建立起始和结束的画面，中间部分由软件自动生成，省去了中间动画制作的复杂过程，这正是Flash的迷人之处，补间动画是Flash中最常用的动画效果。<br />
+参考链接<br />
+<a href="https://link.jianshu.com?t=http%3A%2F%2Fwww.robertpenner.com%2Feasing%2Feasing_demo.html">http://www.robertpenner.com/easing/easing_demo.html</a></p>
+
+<h2 id="tween插件比较">Tween插件比较</h2>
+
+<p><img src="//upload-images.jianshu.io/upload_images/1214868-dc9f64229da69f03.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/674" alt="" /></p>
+
+<p>TIM截图20180518223915.png</p>
+
+<p><strong>Dotween</strong>是众多Unity补间动画插件中效率最高，使用最方便，使用人数最多的一个。</p>
+
+<hr />
+
+<h2 id="dotween方法前缀">Dotween方法前缀</h2>
+
+<p>DO前缀：适用于所有补间快捷方式（可以直接从已知对象开始的操作，如变换或材质）。 也是主DOTween类的前缀。</p>
+
+<pre><code>transform.DOMoveX(100, 1);
+transform.DORestart();
+transform.DoScale();
+</code></pre>
+
+<p>Set前缀：适用于所有可链接到补间的设置（除From之外，因为它作为设置应用，但不是真正的设置）。</p>
+
+<pre><code>myTween.SetLoops(4, LoopType.Yoyo);
+myTween.SetSpeedBased();
+</code></pre>
+
+<p>On前缀：对于可以链接到补间的所有回调。</p>
+
+<pre><code>myTween.OnStart(myStartFunction).
+myTween.OnComplete(myCompleteFunction);
+</code></pre>
+
+<hr />
+
+<h2 id="创建一个tweener">创建一个Tweener</h2>
+
+<p>1.通用方式<br />
+2.快捷方式<br />
+3.其他方式</p>
+
+<ul>
+<li><p>1.通用。最灵活的，可以补间任何值（快捷世界上在后台使用通用方式）</p>
+
+<p>static DOTween.To(getter, setter, to, float duration)<br />
+getter：lambda表达式  ()=&gt; myValue<br />
+setter：lambda表达式  (x)=&gt; myValue = x<br />
+to：最终值<br />
+duration：补间时长<br />
+例如：<br />
+DOTween.To(()=&gt; myVector, x=&gt; myVector = x, new Vector3(3,4,8), 1);<br />
+DOTween.To(()=&gt; myFloat, x=&gt; myFloat = x, 52, 1);</p></li>
+
+<li><p>2.快捷方式：dotween扩展了unity的对象，像transform，rigidbody，material，可以直接使用<br />
+例如：</p>
+
+<p>transform.DOMove(new Vector3(2,3,4), 1);<br />
+rigidbody.DOMove(new Vector3(2,3,4), 1);<br />
+material.DOColor(Color.green, 1);</p></li>
+</ul>
+
+<p>或者[反向播放.From()]</p>
+
+<pre><code>transform.DOMove(new Vector3(2,3,4), 1).From();
+rigidbody.DOMove(new Vector3(2,3,4), 1).From();
+material.DOColor(Color.green, 1).From();
+</code></pre>
+
+<p>其他已实现扩展方法的类：</p>
+
+<pre><code>Unity5： 
+AudioSource、Camera、Light、LineRenderer、Material、Rigidbody、Rigidbody2D、SpriteRenderer、TrailRenderer、Transform
+Unity UI 4.6： 
+CanvasGroup、Image、LayoutElement 、Outline、RectTransform、ScrollRect、Slider 、Text
+Pro版本： 
+doPath，tk2dBaseSprite、tk2dSlicedSprite、tk2dTextMesh、TextMeshPro 、TextMeshProUGUI、Spiral
+</code></pre>
+
+<ul>
+<li><p>3.其他方式：通用方式的其他特殊形式（不用掌握）<br />
+例如：</p>
+
+<p>DOTween.Shake(()=&gt; myVector, x=&gt; myVector = x, 1, 5, 10, 45, false);</p></li>
+</ul>
+
+<h2 id="使用方法api">使用方法API</h2>
+
+<pre><code>Tweener paneltweener = panelTranform.DOScale (new Vector3(2,2,1),1f);
+//多次调用DOTween动画会影响性能
+//DOTween默认动画播放完毕时会自动销毁动画
+//Tweener对象保存这个动画
+
+paneltweener.SetAutoKill(false);              //禁止销毁动画
+
+paneltweener.Pause();                         //停止播放动画
+//paneltweener.SetDelay(0.5f);                //设置动画延迟播放
+//paneltweener.SetEase(Ease.INTERNAL_Zero);   //设置动画运动的模式
+//paneltweener.SetLoops(-1);                  //设置循环播放 （-1为循环播放；&gt;0的时候则表示循环的次数）
+paneltweener.SetLoops(-1,loopType);          //设置循环播放并且设置动画循环的模式
+
+//paneltweener.PlayForward();                 //播放
+//paneltweener.PlayBackwards();               //倒放
+
+
+paneltweener.OnComplete(OnComplete);        //动画播放完毕后执行，动画倒放时候不执行
+paneltweener.OnStart(OnStart);              //动画第一次播放时执行
+paneltweener.OnUpdate(OnUpdate);            //动画播放时不断执行
+paneltweener.OnPlay(OnPlay);                //动画开始播放时执行
+//paneltweener.OnStepComplete(OnStepComplete);//动画播放且倒放都会执行一次，且执行顺序先于OnComplete
+//paneltweener.OnKill(OnKill);                //动画删除的时候执行事件
+//paneltweener.Kill(true);                    //删除动画且组件会直接到达指定位置
+</code></pre>
+
+<h3 id="补间动画序列sequence">补间动画序列Sequence</h3>
+
+<ul>
+<li><p>1.从Sequence末尾追加</p>
+
+<p>mySequence.Append(transform.DOMoveX(45, 1));
+mySequence.AppendCallback(MyCallback);
+mySequence.AppendInterval(interval);</p></li>
+
+<li><p>2.在Sequence中间插入</p>
+
+<p>mySequence.Insert(1, transform.DOMoveX(45, 1));
+mySequence.InsertCallback(1, MyCallback);</p></li>
+
+<li><p>3.在Sequence最后一个开始时间插入</p>
+
+<p>mySequence.Append(transform.DOMoveX(45, 1));
+mySequence.Join(transform.DORotate(new Vector3(0,180,0), 1));</p></li>
+
+<li><p>4.从Sequence的开头追加</p>
+
+<p>mySequence.Prepend(transform.DOMoveX(45, 1));
+mySequence.PrependCallback(MyCallback);
+mySequence.PrependInterval(interval);</p></li>
+</ul>
+
+<p>例如：</p>
+
+<pre><code>Sequence mySequence = DOTween.Sequence();
+mySequence.Append(transform.DOMoveX(45, 1));
+mySequence.Append(transform.DORotate(new Vector3(0,180,0), 1));
+mySequence.PrependInterval(1);
+mySequence.Insert(0, transform.DOScale(new Vector3(3,3,3), mySequence.Duration()));
+</code></pre>
+
+<p>简洁形式</p>
+
+<pre><code>Sequence mySequence = DOTween.Sequence();
+mySequence.Append(transform.DOMoveX(45, 1))
+        .Append(transform.DORotate(new Vector3(0,180,0), 1))
+        .PrependInterval(1)
+        .Insert(0, transform.DOScale(new Vector3(3,3,3), mySequence.Duration()));
+</code></pre>
     
 </div>
 
@@ -131,11 +280,7 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     <div class="tags">
         <i class="fa fa-tags"></i>
         
-            <a href="/tags/r-markdown">R Markdown</a>
-        
-            <a href="/tags/plot">plot</a>
-        
-            <a href="/tags/regression">regression</a>
+            <a href="/tags/dotween">DoTween</a>
         
     </div>
     
@@ -143,18 +288,31 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
 
 </article>
 
-            
-        </div>
-    
-
-    
-    <div class="paginator">
-        
-
         
     </div>
 
+    <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "bilberry-hugo-theme" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
+     
 
         </div>
 
